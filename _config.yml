@@ -1,0 +1,4 @@
+title: AI Wiki
+theme: minima
+plugins:
+  - jekyll-feed
