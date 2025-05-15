@@ -1,0 +1,20 @@
+<form id="testForm">
+  <input type="url" id="url" value="https://en.wikipedia.org/wiki/Ada_Lovelace" required><br>
+  <input type="text" id="title" value="Ada Lovelace" required><br>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById("testForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const url = document.getElementById("url").value;
+    const title = document.getElementById("title").value;
+
+    await fetch("https://n8n1git-u4e627.vm.elestio.app/webhook-test/extract-article", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, title })
+    }).then(() => alert("Submitted!"))
+      .catch(() => alert("Error!"));
+  });
+</script>
