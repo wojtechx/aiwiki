@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Submit Article URL</title>
-  </head>
-  <body>
-    <h2>Extract Article</h2>
-    <form action="https://n8n1git-u42627.vm.elestio.app/webhook/extract-article" method="post">
-      <label for="url">Article URL:</label><br>
-      <input type="text" id="url" name="url" required><br><br>
-      <input type="submit" value="Extract Article">
-    </form>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Article URL</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      max-width: 600px;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="url"] {
+      width: 100%;
+      padding: 0.5em;
+      font-size: 1em;
+      margin-top: 0.5em;
+    }
+    input[type="submit"] {
+      margin-top: 1em;
+      padding: 0.5em 1.5em;
+      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .thank-you {
+      display: none;
+      margin-top: 1.5em;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Extract Article</h2>
+  <form id="articleForm" action="https://n8n1git-u42627.vm.elestio.app/webhook/extract-article" method="post" target="hidden_iframe">
+    <label for="url">Article URL:</label><br>
+    <input type="url" id="url" name="url" placeholder="https://example.com/article" required><br>
+    <input type="submit" value="Extract Article">
+  </form>
+
+  <div class="thank-you" id="thankYouMsg">✅ Article submitted successfully. Processing...</div>
+
+  <!-- Hidden iframe to prevent redirect -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    const form = document.getElementById('articleForm');
+    const msg = document.getElementById('thankYouMsg');
+
+    form.addEventListener('submit', function () {
+      msg.style.display = 'block';
+    });
+  </script>
+</body>
 </html>
