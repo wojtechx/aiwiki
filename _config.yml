@@ -1,4 +1,30 @@
 title: AI Wiki
+description: AI-generated article archive
+baseurl: "/aiwiki" # Change this only if your repo name is different
+url: "https://wojtechx.github.io"
+
 theme: minima
+
+# Ensure custom folders like /posts are included
+include:
+  - _pages
+  - posts
+
+collections:
+  posts:
+    output: true
+    permalink: /posts/:title/
+
+defaults:
+  - scope:
+      path: "posts"
+    values:
+      layout: post
+      category: raw
+
+markdown: kramdown
+permalink: pretty
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
