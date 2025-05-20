@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Article Saved</title>
+</head>
+<body>
+  <h2>✅ Article Successfully Saved</h2>
+  <p id="info"></p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const filename = params.get('file') || 'unknown.md';
+    document.getElementById('info').textContent = `Saved as: ${filename}`;
+  </script>
+</body>
+</html>
